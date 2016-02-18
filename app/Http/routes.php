@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('common.login_signup');
 });
+
+// Authentication routes...
+Route::get('auth/login', ['uses' => 'Auth\AuthController@getLogin', 'as' => 'get_login']);
+Route::post('auth/login', ['uses' => 'Auth\AuthController@postLogin', 'as' => 'post_login']);
+Route::get('auth/logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'get_logout']);
+
+// Registration routes...
+Route::get('auth/register', ['uses' => 'Auth\AuthController@getRegister', 'as' => 'get_register']);
+Route::post('auth/register', ['uses' => 'Auth\AuthController@postRegister', 'as' => 'post_register']);
